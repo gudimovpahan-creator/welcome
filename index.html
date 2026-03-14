@@ -281,6 +281,7 @@
       text-align: center;
       max-width: 600px;
       margin: 0 auto 2rem;
+		font-style: italic;
       color: #4A4A4A;
     }
     .dress-palette {
@@ -677,7 +678,7 @@
             </div>
           </div>
         </div>
-		<div class="dresscode-text"; font-style: italic>
+		<div class="dresscode-text">
           После банкета желающие могут переместиться в котедж для размещения на ночь (с возможностью посещения бассейна и сауны)
         </div>
       </div>
@@ -687,7 +688,7 @@
     <section id="dresscode">
       <h2 style="text-align:center; font-size:2.2rem; color:#4A4A4A;">Дресс-код</h2>
       <div class="dresscode-box">
-        <div class="dresscode-text"; font-style: italic>
+        <div class="dresscode-text">
           Дорогие, мы очень старались сделать этот день особенным и красивым.<br>
           Будем рады, если вы поддержите атмосферу, выбрав наряд в цветах нашей свадьбы.
         </div>
@@ -716,44 +717,41 @@
       </div>
     </section>
 
-    <!-- анкета гостя с отправкой на почту через Formspree -->
+    <!-- анкета гостя с отправкой на Formspree -->
 <section id="rsvp">
   <h2 style="text-align:center; font-size:2.2rem; color:#4A4A4A;">Анкета гостя</h2>
   <p style="text-align:center; color:#4A4A4A; margin-bottom:1rem;">Заполните, чтобы мы сделали день комфортным для всех</p>
   
-  <!-- ВАЖНО: замените YOUR_FORM_ID на ваш реальный ID из Formspree -->
-  <form class="rsvp-form" action="https://formspree.io/f/xreylwdj" method="POST">
-    
-    <!-- Поле для email отправителя (обязательно для Formspree) -->
-    <input type="email" name="_replyto" placeholder="tolst1996@bk.ru" required style="display: none;">
+  <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/xreylwdj" method="POST">
+    <!-- Важно: скрытое поле для темы письма -->
+    <input type="hidden" name="_subject" value="Новый ответ на приглашение Павел & Дарья">
     
     <div class="form-group">
-      <label for="name">Имя и фамилия</label>
+      <label for="name">Имя и фамилия *</label>
       <input type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
     </div>
     
     <div class="form-group">
-      <label>Подтвердите присутствие</label>
+      <label for="email">Email для подтверждения *</label>
+      <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
+    </div>
+    
+    <div class="form-group">
+      <label>Подтвердите присутствие *</label>
       <div class="radio-group">
-        <label><input type="radio" name="attendance" value="буду" checked> Обязательно буду!</label>
-        <label><input type="radio" name="attendance" value="не буду"> К сожалению, не смогу</label>
+        <label><input type="radio" name="attendance" value="Обязательно буду" required> Обязательно буду!</label>
+        <label><input type="radio" name="attendance" value="К сожалению, не смогу"> К сожалению, не смогу</label>
       </div>
     </div>
 
     <div class="form-group">
       <label>Ваши предпочтения по напиткам</label>
       <div class="checkbox-group">
-        <label><input type="checkbox" name="drinks" value="Крепкий алкоголь"> Крепкий алкоголь</label>
-        <label><input type="checkbox" name="drinks" value="Красное вино"> Красное вино</label>
-        <label><input type="checkbox" name="drinks" value="Белое вино"> Белое вино</label>
-        <label><input type="checkbox" name="drinks" value="Шампанское"> Шампанское</label>
+        <label><input type="checkbox" name="drinks[]" value="Крепкий алкоголь"> Крепкий алкоголь</label>
+        <label><input type="checkbox" name="drinks[]" value="Красное вино"> Красное вино</label>
+        <label><input type="checkbox" name="drinks[]" value="Белое вино"> Белое вино</label>
+        <label><input type="checkbox" name="drinks[]" value="Шампанское"> Шампанское</label>
       </div>
-    </div>
-
-    <!-- Дополнительные поля из вашей анкеты -->
-    <div class="form-group">
-      <label>Есть ли аллергии?</label>
-      <textarea name="allergies" rows="2" placeholder="Напишите, если есть особенности питания"></textarea>
     </div>
 
     <button type="submit">Отправить анкету</button>
